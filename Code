@@ -1,0 +1,15 @@
+#include<stdlib.h>
+#include<stdio.h>
+#include<iostream>
+using namespace std;
+#define Num 10
+int Number[Num];
+int Point[Num];
+float Sum(int Number[])
+{  float sum = 0;  float average = 0;  float gpoint; for (int i = 0; i < Num; i++) {  sum += Number[i]; } average = sum / 10; gpoint = average * 0.618; return gpoint;}void show(){ for (int i = 0; i < Num; i++) {  cout << "请第" << i+1 << "个玩家输入数据"<<endl;  cin >> Number[i]; }}
+int FindWiner(float point)
+{ int Winner; float LastPoint = point; int Answer[10]; for (int i = 0; i < Num; i++) {  Answer[i] = Number[i] - LastPoint; }
+}
+void main()
+{
+float point; show(); point = Sum(Number);}

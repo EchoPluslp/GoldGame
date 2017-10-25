@@ -2,20 +2,18 @@
 #include "stdlib.h"
 #include "windows.h"
 #include "math.h"
-typedef struct gameplayer //定义玩家结构体
+typedef struct gameplayer
 {
 int name;
  int score;
  float number; 
-}PLAYER; //含有玩家的姓名，分数，编号，分数信息
+}PLAYER; 
 
-      每个玩家涉及信息量较多，我们很自然选用了结构体。
+void startgame(FILE *fp); 
+void gamerule();
+void suan_score(PLAYER *p,float ave,int num,FILE *fp);
 
-void startgame(FILE *fp); //游戏的初始化
-void gamerule(); //游戏规则
-void suan_score(PLAYER *p,float ave,int num,FILE *fp);//计算比赛得分的函数
 
-      这里我们主要用到这几个函数。
 
 int main()
 {
@@ -45,8 +43,6 @@ int main()
  return 0;
 }
 
-      主函数，我们设计了初始界面：包括开始游戏，游戏规则，退出游戏简单的功能。用SWITCH函数读取玩家的操作。
-
 void startgame(FILE *fp)
 {
  PLAYER *p;
@@ -54,12 +50,12 @@ void startgame(FILE *fp)
  int flag=1;
  float sum,ave;
  char choice;
-	p=(PLAYER *)malloc(10*sizeof(PLAYER)); //动态分配结构体数组
+	p=(PLAYER *)malloc(10*sizeof(PLAYER)); 
 printf("请输入参与的玩家数：");
 scanf("%d",&playernum);
  if(playernum>10)
  {
- p=(PLAYER *)realloc(p,playernum*sizeof(PLAYER));//空间不足而需要增加空间
+ p=(PLAYER *)realloc(p,playernum*sizeof(PLAYER));
 }
 printf("请输入比赛轮次：");
 scanf("%d",&gamenum);
@@ -88,9 +84,6 @@ printf(" 黄金点G的值为：%f\n",ave);
  }
 
 }
-
-     这是开始化游戏函数，动态分配内存空间，如果不够，需要补充空间。主要进行玩家人数和游戏轮次的设定，然后读取玩家各个数值，计算G点值，进入suan_score函数。
-
 void suan_score(PLAYER *p,float ave,int num,FILE *fp)
 {
  int i;

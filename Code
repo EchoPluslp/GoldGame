@@ -1,7 +1,7 @@
-#include "stdafx.h"
+#include <iosteream>
 #include "stdlib.h"
-#include "windows.h"
 #include "math.h"
+using namespace std;
 typedef struct gameplayer
 {
 int name;
